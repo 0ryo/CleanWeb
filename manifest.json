@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "PurgeDOM Cleaner",
+  "name": "CleanWeb",
   "version": "1.0.0",
   "description": "掃除モードで要素を掃除し、元に戻すモードで復活できる拡張機能です。",
   "icons": {
@@ -13,7 +13,7 @@
     "storage"
   ],
   "action": {
-    "default_title": "PurgeDOM Cleaner",
+    "default_title": "CleanWeb",
     "default_icon": {
       "16": "cw-icon-16.png",
       "48": "cw-icon-48.png",

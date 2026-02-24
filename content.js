@@ -1,15 +1,15 @@
 (() => {
-  const STYLE_ID = "__purgedom_cleaner_style__";
-  const CLEAN_MODE_CLASS = "__purgedom_clean_mode_active__";
-  const UNDO_MODE_CLASS = "__purgedom_undo_mode_active__";
-  const CLEAN_HIGHLIGHT_CLASS = "__purgedom_cleaner_highlight__";
-  const RESTORE_HIGHLIGHT_CLASS = "__purgedom_restore_highlight__";
-  const STORAGE_KEY = "__purgedom_removed_selectors__";
-  const REMOVED_ATTR = "data-purgedom-removed";
-  const REMOVED_SELECTOR_ATTR = "data-purgedom-selector";
-  const UNDO_PANEL_ID = "__purgedom_undo_panel__";
-  const UNDO_PANEL_LABEL_CLASS = "__purgedom_undo_panel_label__";
-  const RESTORE_ALL_BUTTON_CLASS = "__purgedom_restore_all_button__";
+  const STYLE_ID = "__cleanweb_cleaner_style__";
+  const CLEAN_MODE_CLASS = "__cleanweb_clean_mode_active__";
+  const UNDO_MODE_CLASS = "__cleanweb_undo_mode_active__";
+  const CLEAN_HIGHLIGHT_CLASS = "__cleanweb_cleaner_highlight__";
+  const RESTORE_HIGHLIGHT_CLASS = "__cleanweb_restore_highlight__";
+  const STORAGE_KEY = "__cleanweb_removed_selectors__";
+  const REMOVED_ATTR = "data-cleanweb-removed";
+  const REMOVED_SELECTOR_ATTR = "data-cleanweb-selector";
+  const UNDO_PANEL_ID = "__cleanweb_undo_panel__";
+  const UNDO_PANEL_LABEL_CLASS = "__cleanweb_undo_panel_label__";
+  const RESTORE_ALL_BUTTON_CLASS = "__cleanweb_restore_all_button__";
 
   let cleanModeEnabled = false;
   let undoModeEnabled = false;
