@@ -14,7 +14,17 @@
   ],
   "action": {
     "default_title": "PurgeDOM Cleaner",
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "cw-icon-16.png",
+      "48": "cw-icon-48.png",
+      "128": "cw-icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "cw-icon-16.png",
+    "48": "cw-icon-48.png",
+    "128": "cw-icon-128.png"
   },
   "content_scripts": [
     {
