@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>PurgeDOM Cleaner</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="app">
+      <h1>PurgeDOM Cleaner</h1>
+      <p id="status" class="status">現在: OFF</p>
+
+      <div class="button-group">
+        <button id="clean-toggle-button" class="mode-button clean-button" type="button">
+          掃除モードを開始
+        </button>
+        <button id="undo-toggle-button" class="mode-button undo-button" type="button">
+          元に戻すモードを開始
+        </button>
+      </div>
+
+      <p class="hint">
+        掃除モード: 要素をホバーしてクリックすると掃除（非表示）します。
+      </p>
+      <p class="hint">
+        元に戻すモード: 掃除済み要素を薄緑オーバーレイで表示し、クリックで復活します。
+      </p>
+      <p id="error" class="error" aria-live="polite"></p>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>
