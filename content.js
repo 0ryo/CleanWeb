@@ -26,35 +26,19 @@
     return `${window.location.origin}${window.location.pathname}${window.location.search}`;
   }
 
-  function getStorageData() {
-    return new Promise((resolve, reject) => {
-      chrome.storage.local.get([STORAGE_KEY], (result) => {
-        if (chrome.runtime.lastError) {
-          reject(new Error(chrome.runtime.lastError.message));
-          return;
-        }
+  async function getStorageData() {
+    const result = await browser.storage.local.get(STORAGE_KEY);
+    const value = result[STORAGE_KEY];
 
-        const value = result[STORAGE_KEY];
-        if (!value || typeof value !== "object") {
-          resolve({});
-          return;
-        }
+    if (!value || typeof value !== "object") {
+      return {};
+    }
 
-        resolve(value);
-      });
-    });
+    return value;
   }
 
-  function setStorageData(data) {
-    return new Promise((resolve, reject) => {
-      chrome.storage.local.set({ [STORAGE_KEY]: data }, () => {
-        if (chrome.runtime.lastError) {
-          reject(new Error(chrome.runtime.lastError.message));
-          return;
-        }
-        resolve();
-      });
-    });
+  async function setStorageData(data) {
+    await browser.storage.local.set({ [STORAGE_KEY]: data });
   }
 
   function normalizeSelectorList(value) {
@@ -775,19 +759,17 @@
 
   void initializePersistence();
 
-  chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+  browser.runtime.onMessage.addListener((message) => {
     if (!message || typeof message.type !== "string") {
-      return;
+      return undefined;
     }
 
     if (message.type === "GET_CLEAN_MODE") {
-      sendResponse(buildModeStateResponse());
-      return;
+      return buildModeStateResponse();
     }
 
     if (message.type === "GET_MODES") {
-      sendResponse(buildModeStateResponse());
-      return;
+      return buildModeStateResponse();
     }
 
     if (message.type === "TOGGLE_CLEAN_MODE") {
@@ -796,8 +778,7 @@
       } else {
         enableCleanMode();
       }
-      sendResponse(buildModeStateResponse());
-      return;
+      return buildModeStateResponse();
     }
 
     if (message.type === "TOGGLE_UNDO_MODE") {
@@ -806,8 +787,7 @@
       } else {
         enableUndoMode();
       }
-      sendResponse(buildModeStateResponse());
-      return;
+      return buildModeStateResponse();
     }
 
     if (message.type === "SET_CLEAN_MODE") {
@@ -816,8 +796,7 @@
       } else {
         disableCleanMode();
       }
-      sendResponse(buildModeStateResponse());
-      return;
+      return buildModeStateResponse();
     }
 
     if (message.type === "SET_UNDO_MODE") {
@@ -826,7 +805,9 @@
       } else {
         disableUndoMode();
       }
-      sendResponse(buildModeStateResponse());
+      return buildModeStateResponse();
     }
+
+    return undefined;
   });
 })();

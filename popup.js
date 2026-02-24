@@ -36,29 +36,19 @@ function updateUI(modeState) {
   undoToggleButton.classList.toggle("is-active", undoEnabled);
 }
 
-function withActiveTab(callback) {
-  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    callback(tabs[0]);
-  });
+async function getActiveTab() {
+  const tabs = await browser.tabs.query({ active: true, currentWindow: true });
+  return tabs[0];
 }
 
-function sendMessageToActiveTab(message) {
-  return new Promise((resolve, reject) => {
-    withActiveTab((tab) => {
-      if (!tab || typeof tab.id !== "number") {
-        reject(new Error("アクティブなタブを取得できません。"));
-        return;
-      }
+async function sendMessageToActiveTab(message) {
+  const tab = await getActiveTab();
 
-      chrome.tabs.sendMessage(tab.id, message, (response) => {
-        if (chrome.runtime.lastError) {
-          reject(new Error(chrome.runtime.lastError.message));
-          return;
-        }
-        resolve(response);
-      });
-    });
-  });
+  if (!tab || typeof tab.id !== "number") {
+    throw new Error("アクティブなタブを取得できません。");
+  }
+
+  return browser.tabs.sendMessage(tab.id, message);
 }
 
 async function syncMode() {

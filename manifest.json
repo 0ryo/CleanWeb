@@ -3,6 +3,11 @@
   "name": "PurgeDOM Cleaner",
   "version": "1.0.0",
   "description": "掃除モードで要素を掃除し、元に戻すモードで復活できる拡張機能です。",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "purgedom-cleaner@local"
+    }
+  },
   "permissions": [
     "tabs",
     "storage"
