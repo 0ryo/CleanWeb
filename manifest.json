@@ -3,12 +3,22 @@
   "name": "PurgeDOM Cleaner",
   "version": "1.0.0",
   "description": "掃除モードで要素を掃除し、元に戻すモードで復活できる拡張機能です。",
+  "icons": {
+    "16": "cw-icon-16.png",
+    "48": "cw-icon-48.png",
+    "128": "cw-icon-128.png"
+  },
   "permissions": [
     "tabs",
     "storage"
   ],
   "action": {
     "default_title": "PurgeDOM Cleaner",
+    "default_icon": {
+      "16": "cw-icon-16.png",
+      "48": "cw-icon-48.png",
+      "128": "cw-icon-128.png"
+    },
     "default_popup": "popup.html"
   },
   "content_scripts": [
